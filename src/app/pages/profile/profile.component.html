@@ -1,0 +1,44 @@
+<div class="principal">
+    <div class="formulario1">
+        <h1>EDITAR DATOS</h1>
+        <form>
+            <div class="casillas">
+                    <input type="text" placeholder="Nombre" #nombre>
+                    <input type="text" placeholder="Apellido" #apellido>
+                    <input type="text" placeholder="Correo" #correo>
+            </div>
+            <button type="button" class="button" (click)="modificar(nombre.value, apellido.value, correo.value)">
+                        <h3>Modificar</h3>
+             </button>
+        </form>
+    </div>
+
+    <div>
+        <p>
+            {{autor.name}} <br>
+            {{autor.surname}} <br>
+            {{autor.email}} <br>
+        </p>
+    </div>
+
+    <div class="formulario2">
+        <img src="../../../assets/img/pexels-stefan-stefancik-91227.jpg" alt="">
+        <h2>Armando Paredes</h2>
+        <div class="cajaletras">
+            <div class="datosusuario">
+                <h3>Nombre</h3>
+                <h3>Apellidos</h3>
+                <h3>Correo</h3>
+            </div>
+
+            <div class="casillas2">
+                <input type="text" placeholder="Nombre">
+                <input type="text" placeholder="Apellido">
+                <input type="text" placeholder="Correo">      
+            </div>
+
+        </div>
+        
+    </div>
+    
+</div>
