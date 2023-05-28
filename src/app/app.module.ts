@@ -9,6 +9,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { FormRegisterComponent } from './component/form-register/form-register.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { BooksComponent } from './pages/books/books.component';
+import { MipipePipe } from './pipes/mipipe.pipe';
+import { CardComponent } from './component/card/card.component';
 
 
 @NgModule({
@@ -20,6 +23,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
     FormRegisterComponent,
     RegisterComponent,
     ProfileComponent,
+    BooksComponent,
+    MipipePipe,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
