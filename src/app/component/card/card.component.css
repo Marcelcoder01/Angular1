@@ -1,0 +1,52 @@
+.card{
+    border:1px solid gray;
+    display:flex;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+
+}
+
+.card-img-top{
+   height: 300px;
+   width: 75%;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.evenitem{
+    background-color: rgb(154, 195, 248);
+}
+
+.evenitem .btn-primary{
+    background-color: rgb(0, 0, 0);
+}
+
+.evenitem .btn-primary:hover{
+    background-color: rgb(255, 253, 253);
+    color: black;
+}
+
+.odditem{
+    background-color: bisque;
+}
+
+.odditem .btn-primary{
+    background-color: rgb(255, 255, 255);
+    color:black
+}
+
+.odditem .btn-primary:hover{
+    background-color: rgb(0, 0, 0);
+    color:rgb(255, 255, 255)
+}
+
+.botoncerrar{
+    border-radius: 50%;
+    margin-bottom: 5px;
+}

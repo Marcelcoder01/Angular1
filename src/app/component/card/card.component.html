@@ -1,1 +1,11 @@
-<p>card works!</p>
+<div class="card" style="width: 18rem;" [ngClass]="even ? 'evenitem' : 'odditem'">
+    <button type="button" class="btn btn-danger botoncerrar" (click)="enviarLibro()"> X </button>
+   <img class="card-img-top" src="{{libro.photo}}" alt="Card image cap">
+   <div class="card-body">
+     <h5 class="card-title"> {{libro.title}}</h5>
+     <p class="card-text">{{libro.author | uppercase}}</p>
+     <h5 class="card-title"> {{libro.price}}</h5>
+     <p class="card-text">{{libro.id_book | mipipe}}</p>
+     <a href="#" class="btn btn-primary">Comprar</a>
+   </div>
+ </div>

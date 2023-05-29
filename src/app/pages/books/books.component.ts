@@ -21,6 +21,9 @@ export class BooksComponent {
 
         let nuevoLibro = new Book(id_book, id_user, title, type, author, price, photo);
         this.libros.push(nuevoLibro);
+    
     }
-
+    borrarLibro(nameLibro:string):void{
+      this.libros = this.libros.filter(libro => libro.title != nameLibro);
+    }
 }

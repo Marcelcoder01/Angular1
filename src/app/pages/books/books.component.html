@@ -1,29 +1,13 @@
 
-    <div class="contenedor" *ngIf="libros.length > 0; else noHay">
+    <div class="contenedor">
 
-     <div class="card" style="width: 18rem;" 
-     *ngFor="let libro of libros; let i = index; let o = odd; let e = even"
-     [ngClass]="{evenitem:e, odditem:o}">
-        <img class="card-img-top" src="{{libro.photo}}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"> {{libro.title}}</h5>
-          <p class="card-text">{{libro.author | uppercase}}</p>
-          <h5 class="card-title"> {{libro.price}}</h5>
-          <p class="card-text">{{libro.id_book | mipipe}}</p>
-          <a href="#" class="btn btn-primary">Comprar</a>
-        </div>
-      </div>
+        <ng-container *ngFor="let libro of libros; let even = even">
     
+             <app-card [libro]="libro" [even]="even" (nameLibro) = "borrarLibro($event)"></app-card>
+
+        </ng-container>
 
     </div>
-
-    <ng-template #noHay>
-        <div class="contenedor">
-            <h2 class="text-danger">
-                No hay libros
-            </h2>
-        </div>
-    </ng-template>
 
  <div class="contenedor2">
     <div class="formulario">
@@ -45,3 +29,10 @@
     </div>
 </div>
     
+    <!-- <ng-template #noHay>
+        <div class="contenedor">
+            <h2 class="text-danger">
+                No hay libros
+            </h2>
+        </div>
+    </ng-template> -->
