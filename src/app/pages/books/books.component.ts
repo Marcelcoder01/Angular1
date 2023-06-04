@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Book } from 'src/app/models/book';
+import { BooksService } from 'src/app/shared/books.service';
 
 @Component({
   selector: 'app-books',
@@ -9,21 +10,33 @@ import { Book } from 'src/app/models/book';
 export class BooksComponent {
   
     public libros: Book[];
+    public book: Book;
     
-    constructor(){
-      this.libros = [
-      new Book(302010, 0, 'El Secreto', 'Autoayuda', 'Rhonda Byrne', 15.99, 'https://m.media-amazon.com/images/I/51HdLoSQTeL._AC_UF1000,1000_QL80_.jpg'),
-      new Book(102030, 0, 'Las 48 leyes del Poder', 'Autoayuda', 'Robert Greene', 18.99, 'https://imagessl5.casadellibro.com/a/l/t5/15/9788423991815.jpg'), 
-      new Book(203010, 0, 'El Monje que vendió su Ferrari', 'Autoayuda', 'Robin S Sharma', 12.99, 'https://m.media-amazon.com/images/I/41tyvoqNWGL.jpg')
-    ]
+    constructor(public booksService:BooksService){
+        this.libros = this.booksService.getAll();
     }
-    addLibro(id_book:number, id_user, title:string, type:string, author:string, price: number, photo: string){
 
-        let nuevoLibro = new Book(id_book, id_user, title, type, author, price, photo);
-        this.libros.push(nuevoLibro);
-    
+   borrarLibro(id_book:number):void{
+    this.booksService.delete(id_book)
+   }
+
+   buscaLibro(id_book:string):void{
+    if (id_book != '') {
+      for (let i = 0; i < this.libros.length; i++) {
+        if (Number(id_book) == this.libros[i].id_book) {
+          this.libros = [this.booksService.getOne(Number(id_book))];
+        }else{
+          let buscaLibroArray:Book[] = [];
+          for (const book of this.libros) {
+            if (book.id_book.toString().indexOf(id_book) !== -1) {
+              buscaLibroArray.push(book);
+            }
+          }
+          this.libros = buscaLibroArray;
+        }
+      }
+    }else{
+      this.libros = this.booksService.getAll();
     }
-    borrarLibro(nameLibro:string):void{
-      this.libros = this.libros.filter(libro => libro.title != nameLibro);
-    }
+  }
 }

@@ -1,0 +1,23 @@
+<div class="principal">
+
+    <div class="contenedor2">
+            <div class="formulario">
+                 <h2>Añadir libro:</h2>
+         <form>
+            <div class="casillas">
+                    <input type="number" placeholder="ID del libro" #id_book>
+                    <input type="number" placeholder="ID del usuario" #id_user>
+                    <input type="text" placeholder="Título" #title>
+                    <input type="text" placeholder="Tipo" #type>
+                    <input type="text" placeholder="Autor" #author>
+                    <input type="number" placeholder="Precio" #price>
+                    <input type="text" placeholder="Foto" #photo>
+            </div>
+            <button class="button" (click)="addBook(id_book.value, id_user.value, title.value, type.value, author.value, price.value, photo.value)">
+                        <h3>Añadir</h3>
+            </button>
+        </form>
+            </div>
+    </div>
+
+</div>
