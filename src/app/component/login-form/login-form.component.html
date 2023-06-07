@@ -1,0 +1,46 @@
+<div>
+<br>
+    <form [formGroup]="miFormulario"  (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+
+            <input id="email" formControlName="email" class="form-control"
+             placeholder="Email" 
+             [ngClass]="{'is-invalid': miFormulario.get('email')?.invalid && (miFormulario.get('email')?.dirty || miFormulario.get('email')?.touched) }" required>
+                
+             <div class="invalid-feedback" *ngIf="miFormulario.get('email')?.errors?.['required'] && (miFormulario.get('email')?.dirty || miFormulario.get('email')?.touched)">
+                <p> El email es obligatorio </p>
+             </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <input id="password" formControlName="password" class="form-control"
+            placeholder="Password"
+            [ngClass]="{'is-invalid': miFormulario.get('password')?.invalid && (miFormulario.get('password')?.dirty || miFormulario.get('password')?.touched) }">
+
+        </div>
+
+        <div class="invalid-feedback" *ngIf="!miFormulario.get('password').valid">
+            El campo contraseña es obligatorio
+          </div>
+
+          <div class="invalid-feedback" *ngIf="miFormulario.get('password')?.errors?.invalidPassword && (miFormulario.get('password')?.dirty || miFormulario.get('password')?.touched)">
+            La contraseña debe contener al menos una mayúscula, una minúscula y un número
+          </div>
+        <!-- <div class="invalid-feedback" *ngIf="miFormulario.get('password')?.errors?.['required'] && (miFormulario.get('password')?.dirty || miFormulario.get('password')?.touched)">
+            <p> La contraseña es obligatoria </p>
+         </div> -->
+
+        <br>
+
+        <div>
+
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="miFormulario.invalid">Entrar</button>
+
+        </div>
+
+    </form>
+
+</div>
