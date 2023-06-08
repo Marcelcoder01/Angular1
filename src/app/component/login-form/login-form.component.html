@@ -20,7 +20,7 @@
             placeholder="Password"
             [ngClass]="{'is-invalid': miFormulario.get('password')?.invalid && (miFormulario.get('password')?.dirty || miFormulario.get('password')?.touched) }">
 
-        </div>
+      
 
         <div class="invalid-feedback" *ngIf="!miFormulario.get('password').valid">
             El campo contraseña es obligatorio
@@ -29,9 +29,9 @@
           <div class="invalid-feedback" *ngIf="miFormulario.get('password')?.errors?.invalidPassword && (miFormulario.get('password')?.dirty || miFormulario.get('password')?.touched)">
             La contraseña debe contener al menos una mayúscula, una minúscula y un número
           </div>
-        <!-- <div class="invalid-feedback" *ngIf="miFormulario.get('password')?.errors?.['required'] && (miFormulario.get('password')?.dirty || miFormulario.get('password')?.touched)">
-            <p> La contraseña es obligatoria </p>
-         </div> -->
+
+        </div>
+ 
 
         <br>
 
