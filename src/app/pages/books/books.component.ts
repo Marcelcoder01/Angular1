@@ -10,21 +10,33 @@ import { BooksService } from 'src/app/shared/books.service';
 export class BooksComponent {
   
     public libros: Book[];
-    public book: Book;
+    // public book: Book;
     
-    constructor(public booksService:BooksService){
-        this.libros = this.booksService.getAll();
+    constructor(private bookService: BooksService){
+      this.getAll()
+    }
+
+    getAll():void{
+      this.bookService.getAll().subscribe((data:Book []) =>{
+        this.libros = data;
+        console.log(data);
+      })
     }
 
    borrarLibro(id_book:number):void{
-    this.booksService.delete(id_book)
+    this.bookService.deleteBook(id_book).subscribe((res:any)=>{
+      console.log(res)
+    })
    }
 
    buscaLibro(id_book:string):void{
+
     if (id_book != '') {
       for (let i = 0; i < this.libros.length; i++) {
         if (Number(id_book) == this.libros[i].id_book) {
-          this.libros = [this.booksService.getOne(Number(id_book))];
+          this.bookService.getOne(Number(id_book)).subscribe((res: Book[])=>{
+            this.libros = res
+          });
         }else{
           let buscaLibroArray:Book[] = [];
           for (const book of this.libros) {
@@ -36,7 +48,14 @@ export class BooksComponent {
         }
       }
     }else{
-      this.libros = this.booksService.getAll();
+      this.bookService.getAll().subscribe((res:Book[])=>{
+        this.libros = res
+      });
     }
+ 
+    }
+
+
+
   }
-}
+

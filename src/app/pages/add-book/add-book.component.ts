@@ -11,19 +11,34 @@ import { Router } from '@angular/router';
 export class AddBookComponent {
   public book: Book;
   public libros: Book[];
+
+  constructor(public bookService:BooksService){
     
-  constructor(public bookService:BooksService, public router: Router ){
-     this.libros = this.bookService.getAll()
+ }
+
+  addBook(id_book:number, id_user:number, title:string, type:string, author:string, price:number, photo:string):void{
+    let newBook = new Book(id_user, id_user, title, type, author, price, photo);
+    
+    this.bookService.addBook(newBook).subscribe((data:boolean) =>{
+     console.log(data)
+      }
+      
+    )
+    
+  }
+  
+
+
+  // addBook(
+  //   id_book: string, id_user: string, title: string, type: string, author: string, price: number, photo: string)
+  //   {let code_libro: number = Number(id_book);
+  //   let code_user: number = Number(id_user);
+  //   let book: Book = new Book(code_libro,code_user,title,type,author,price,photo);
+  //   this.bookService.addBook(book);
+
+    // this.router.navigateByUrl('/books');
+    // }
   }
 
-  addBook(
-    id_book: string, id_user: string, title: string, type: string, author: string, price: number, photo: string)
-    {let code_libro: number = Number(id_book);
-    let code_user: number = Number(id_user);
-    let book: Book = new Book(code_libro,code_user,title,type,author,price,photo);
-    this.bookService.addBook(book);
-
-    this.router.navigateByUrl('/books');
-    }
-  }
+  
 
